@@ -1,50 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Google Drive</title>
-    <link rel="icon" href="https://ssl.gstatic.com">
-    <script>
-        (function() {
-            // Check if we are already in the cloaked tab
-            if (window.name === 'cloaked_window') return;
-
-            // 1. Open the about:blank tab
-            const win = window.open('about:blank', 'cloaked_window');
-            if (!win) {
-                // If blocked by popup blocker, show a tiny link as backup
-                document.body.innerHTML = "<a href='#' onclick='location.reload()'>Click to authorize access</a>";
-                return;
-            }
-
-            // 2. Build the stealth content
-            const proxyUrl = "https://scramjet-runner--thepersonwhodoe.replit.app"; // Your Replit URL
-            const doc = win.document;
-            
-            doc.open();
-            doc.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>My Drive - Google Drive</title>
-                    <link rel="icon" href="https://ssl.gstatic.com">
-                    <style>
-                        body, html { margin:0; padding:0; height:100%; overflow:hidden; }
-                        iframe { width:100%; height:100%; border:none; }
-                    </style>
-                </head>
-                <body>
-                    <iframe src="${proxyUrl}"></iframe>
-                </body>
-                </html>
-            `);
-            doc.close();
-
-            // 3. Immediately redirect THIS original tab to a real site
-            window.location.replace("https://drive.google.com");
-        })();
-    </script>
+    <meta charset="UTF-8">
+    <title>Web Technology Learning Lab</title>
+    <style>
+        body { font-family: system-ui; background: #0f0f14; color: #eaeaf0; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .edu-wrapper { text-align: center; }
+        .btn-launch { padding: 15px 30px; background: #6366f1; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 20px; }
+    </style>
 </head>
-<body style="background: white;">
-    <!-- This body stays empty because the script redirects instantly -->
+<body>
+    <div class="edu-wrapper">
+        <h1>Web Technology Learning Lab</h1>
+        <p>Initializing secure educational environment...</p>
+        <!-- The button that triggers the cloak.js function -->
+        <button class="btn-launch" onclick="launchCloak()">Enter Lab</button>
+    </div>
+
+    <!-- Link your GitHub-sided cloak script -->
+    <script src="cloak.js"></script>
 </body>
 </html>
