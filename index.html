@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Drive - Google Drive</title>
+    <!-- Official Google Drive Favicon -->
+    <link rel="icon" href="https://ssl.gstatic.com" type="image/x-icon">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: #1765cc; }
+        p { color: #5f6368; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Google Drive Portal</h1>
+        <p>Your educational resources are ready.</p>
+        <!-- This button triggers both the about:blank cloak and the redirect logic -->
+        <button onclick="launchProxy()">Open Resources</button>
+    </div>
+
+    <script>
+        function launchProxy(const url = "scramjet-runner--thepersonwhodoe.replit.app
+N/A"; // Your Replit URL here
+) {
+            // 1. Create the about:blank window
+            const win = window.open('about:blank', '_blank');
+            
+            // 2. Set the content of the new tab
+            const url = window.location.href; // Points to your current Replit/Scramjet app
+            
+            // Create a fake Google Drive environment inside the about:blank tab
+            const doc = win.document;
+            doc.title = "My Drive - Google Drive";
+            
+            // Add the Google Drive Favicon to the new tab
+            const link = doc.createElement('link');
+            link.rel = 'icon';
+            link.href = 'https://ssl.gstatic.com';
+            doc.head.appendChild(link);
+
+            // 3. Embed your Scramjet Proxy inside an iframe
+            const iframe = doc.createElement('iframe');
+            iframe.src = url; 
+            iframe.style.position = 'fixed';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            
+            doc.body.style.margin = '0';
+            doc.body.appendChild(iframe);
+
+            // Optional: Redirect the original tab to a real Google page as a "decoy"
+            window.location.replace("https://google.com");
+        }
+    </script>
+</body>
+</html>
